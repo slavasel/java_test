@@ -1,4 +1,4 @@
-package src.main.java.flowers.classes.flower_architecture;
+package src.main.java.flowers.classes.flower_architecture; //в Джаве подчеркивание не используется в именах пакета
 
 public abstract class Flower extends FlowerAbstract {
 
