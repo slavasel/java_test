@@ -39,7 +39,9 @@ public class UserInterface {
         // Scanner will listen to the user's input
         String selection = scanner.next();
 
-        if (!selection.equals("exit")) {
+        if (!selection.equals("exit")) { // лучше сделать через case. 
+        //Содержимого каждого if лучше сделать отдельным методом и этим методам дать понятные имена, 
+        //т.о. можно избавиться от комментариев и сделать самодокументируемый код
             // Adding a Flower
             if (selection.equals("add")) {
                 UserFlowerInput flowerData = this.gatherFlowerData();
