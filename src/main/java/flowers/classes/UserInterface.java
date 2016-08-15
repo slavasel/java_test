@@ -52,7 +52,7 @@ public class UserInterface {
                 fc.addFlowerToCollection(flowerData);
 
                 this.log("Flower has been added");
-                this.wait(2);
+                this.wait(2); // вместо вейтов, лучше было добавить ожидание до нажатия на любую кнопку
                 this.start();
             }
 
