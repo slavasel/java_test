@@ -98,7 +98,7 @@ public class UserInterface {
     private UserFlowerInput gatherFlowerData () {
         // ask use to fill all required data
         this.log("Enter type (rose, lily):");
-        String type = scanner.next();
+        String type = scanner.next(); // нужно сразу проверить, чтобы вводили только rose или lily
 
         this.log("Enter length (mm):");
         int length = scanner.nextInt();
@@ -113,7 +113,8 @@ public class UserInterface {
         return ret;
     }
 
-    private Integer[] gatherLengthFilter () {
+    private Integer[] gatherLengthFilter () {  // лучше было бы вернуть массив int а не Integer. Но даже в данном случае в строке 79 можно не делеть приведение типов.
+    //Почитай про исходящее и нисходящее приобразование типов а также по автобоксинг и автоанбоксинг
         this.log("Enter min length:");
         Integer l1 = scanner.nextInt();
 
