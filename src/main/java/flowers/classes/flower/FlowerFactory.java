@@ -1,14 +1,14 @@
-package src.main.java.flowers.classes.flower_architecture;
+package src.main.java.flowers.classes.flower;
 
 import src.main.java.flowers.classes.*;
 
 public class FlowerFactory {
 
     public Flower createNew (UserFlowerInput flowerData) {
-        String flowerType = flowerData.type;
-        int length = (int) flowerData.length;
-        int lifetime = (int) flowerData.lifetime;
-        int price = (int) flowerData.price;
+        String flowerType = flowerData.getType();
+        int length = (int) flowerData.getLength();
+        int lifetime = (int) flowerData.getLifetime();
+        int price = (int) flowerData.getPrice();
         Flower flower;
 
         if (flowerType.equals("rose")) {

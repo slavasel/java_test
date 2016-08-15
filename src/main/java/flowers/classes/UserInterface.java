@@ -3,7 +3,7 @@ package src.main.java.flowers.classes;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.ArrayList;
-import src.main.java.flowers.classes.flower_architecture.*;
+import src.main.java.flowers.classes.flower.*;
 
 public class UserInterface {
 
@@ -13,7 +13,7 @@ public class UserInterface {
     private final String ANSI_HOME = "\u001b[H";
 
     public UserInterface () {
-        this.fc = new FlowerCollection(); // this в Джаве пишут только если перекрываются области видимости переменных с одинаковыми именами.
+        fc = new FlowerCollection();
     }
 
     public void start () {
@@ -126,7 +126,7 @@ public class UserInterface {
     }
 
     private boolean validateFlower (UserFlowerInput FlowerData) {
-        if (!Arrays.asList(this.fc.FLOWER_TYPES).contains(FlowerData.type)) {
+        if (!Arrays.asList(this.fc.FLOWER_TYPES).contains(FlowerData.getType())) {
             this.log("Sorry. We don't have this flower in our store. Please, try again");
             return false;
         }

@@ -1,4 +1,4 @@
-package src.main.java.flowers.classes.flower_architecture;
+package src.main.java.flowers.classes.flower;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -36,11 +36,10 @@ public class FlowerCollection {
         for (Flower flower: this.flowers) {
             total += flower.getPrice();
         }
-        return "Total price is $" + total; // тексты нужно выносить в статические переменные, чтобы в последствии облегчить работу с ними 
-        //и если нужно будет - проще сделать многоязыковую поддержку
+        return "Total price is $" + total;
     }
 
-    public void sortByLifetime () {   // отлично сделано через compare
+    public void sortByLifetime () {
         Collections.sort(this.flowers, new Comparator<Flower>() {
             public int compare(Flower s1, Flower s2) {
                 return s1.getLifetime() > s2.getLifetime() ? 1 : -1;

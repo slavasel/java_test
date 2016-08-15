@@ -1,4 +1,4 @@
-package src.main.java.flowers.classes.flower_architecture;
+package src.main.java.flowers.classes.flower;
 
 public class Lily extends Flower {
     private boolean hasSharps = false;
