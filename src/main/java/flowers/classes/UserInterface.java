@@ -13,7 +13,7 @@ public class UserInterface {
     private final String ANSI_HOME = "\u001b[H";
 
     public UserInterface () {
-        this.fc = new FlowerCollection();
+        this.fc = new FlowerCollection(); // this в Джаве пишут только если перекрываются области видимости переменных с одинаковыми именами.
     }
 
     public void start () {
