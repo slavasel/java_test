@@ -98,7 +98,7 @@ public class UserInterface {
     private UserFlowerInput gatherFlowerData () {
         // ask use to fill all required data
         this.log("Enter type (rose, lily):");
-        String type = scanner.next(); // нужно сразу проверить, чтобы вводили только rose или lily
+        String type = scanner.next(); // нужно сразу проверить, чтобы вводили только rose или lily. Т.к. валидатор вызывается только после того как все ввели.
 
         this.log("Enter length (mm):");
         int length = scanner.nextInt();
