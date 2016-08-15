@@ -40,7 +40,7 @@ public class FlowerCollection {
         //и если нужно будет - проще сделать многоязыковую поддержку
     }
 
-    public void sortByLifetime () {
+    public void sortByLifetime () {   // отлично сделано через compare
         Collections.sort(this.flowers, new Comparator<Flower>() {
             public int compare(Flower s1, Flower s2) {
                 return s1.getLifetime() > s2.getLifetime() ? 1 : -1;
