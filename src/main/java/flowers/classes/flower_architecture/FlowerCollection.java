@@ -36,7 +36,8 @@ public class FlowerCollection {
         for (Flower flower: this.flowers) {
             total += flower.getPrice();
         }
-        return "Total price is $" + total;
+        return "Total price is $" + total; // тексты нужно выносить в статические переменные, чтобы в последствии облегчить работу с ними 
+        //и если нужно будет - проще сделать многоязыковую поддержку
     }
 
     public void sortByLifetime () {
