@@ -12,15 +12,15 @@ public abstract class Flower implements FlowerAbstract {
     }
 
     public int getPrice () {
-        return this.price;
+        return price;
     }
 
     public int getLength () {
-        return this.size;
+        return size;
     }
 
     public int getLifetime () {
-        return this.lifetime;
+        return lifetime;
     }
 
     public abstract void tellAllAboutThisFlower ();

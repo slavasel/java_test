@@ -17,8 +17,8 @@ public class UserInterface {
     }
 
     public void start () {
-        this.showDescription();
-        this.listenUserInteractions();
+        showDescription();
+        listenUserInteractions();
     }
 
     private void showDescription () {
@@ -44,69 +44,69 @@ public class UserInterface {
         //т.о. можно избавиться от комментариев и сделать самодокументируемый код
             // Adding a Flower
             if (selection.equals("add")) {
-                UserFlowerInput flowerData = this.gatherFlowerData();
-                while (!this.validateFlower(flowerData)) {
-                    flowerData = this.gatherFlowerData();
+                UserFlowerInput flowerData = gatherFlowerData();
+                while (!validateFlower(flowerData)) {
+                    flowerData = gatherFlowerData();
                 }
 
                 fc.addFlowerToCollection(flowerData);
 
-                this.log("Flower has been added");
-                this.wait(2); // вместо вейтов, лучше было добавить ожидание до нажатия на любую кнопку
-                this.start();
+                log("Flower has been added");
+                wait(2); // вместо вейтов, лучше было добавить ожидание до нажатия на любую кнопку
+                start();
             }
 
             // Showing a list
             if (selection.equals("list")) {
-                this.fc.showInfo();
-                this.wait(5);
-                this.start();
+                fc.showInfo();
+                wait(5);
+                start();
             }
 
             // Calculating total price
             if (selection.equals("total")) {
-                String total = this.fc.getTotalPrice();
-                this.log(total);
-                this.wait(2);
-                this.start();
+                String total = fc.getTotalPrice();
+                log(total);
+                wait(2);
+                start();
             }
 
             // Show filtered data
             if (selection.equals("filter")) {
-                Integer[] filterData = this.gatherLengthFilter();
+                Integer[] filterData = gatherLengthFilter();
 
-                for (Flower flower: this.fc.getCollection()) {
+                for (Flower flower: fc.getCollection()) {
                     if (flower.getLength() > (int) filterData[0] && flower.getLength() < (int) filterData[1]) {
                         flower.tellAllAboutThisFlower();
                     }
                 }
 
-                this.wait(5);
-                this.start();
+                wait(5);
+                start();
             }
 
             // Sort by lifetime
             if (selection.equals("sort")) {
-                this.fc.sortByLifetime();
-                this.fc.showInfo();
-                this.wait(5);
-                this.start();
+                fc.sortByLifetime();
+                fc.showInfo();
+                wait(5);
+                start();
             }
         }
     }
 
     private UserFlowerInput gatherFlowerData () {
         // ask use to fill all required data
-        this.log("Enter type (rose, lily):");
+        log("Enter type (rose, lily):");
         String type = scanner.next(); // нужно сразу проверить, чтобы вводили только rose или lily. Т.к. валидатор вызывается только после того как все ввели.
 
-        this.log("Enter length (mm):");
+        log("Enter length (mm):");
         int length = scanner.nextInt();
 
-        this.log("How old is a flower? (days)");
+        log("How old is a flower? (days)");
         int lifetime = scanner.nextInt();
 
-        this.log("How much it costs? ($)");
+        log("How much it costs? ($)");
         int price = scanner.nextInt();
 
         UserFlowerInput ret = new UserFlowerInput(type, length, lifetime, price);
@@ -115,10 +115,10 @@ public class UserInterface {
 
     private Integer[] gatherLengthFilter () {  // лучше было бы вернуть массив int а не Integer. Но даже в данном случае в строке 79 можно не делеть приведение типов.
     //Почитай про исходящее и нисходящее приобразование типов а также по автобоксинг и автоанбоксинг
-        this.log("Enter min length:");
+        log("Enter min length:");
         Integer l1 = scanner.nextInt();
 
-        this.log("Enter max lenth:");
+        log("Enter max lenth:");
         Integer l2 = scanner.nextInt();
 
         Integer[] ret = {l1, l2};
@@ -126,8 +126,8 @@ public class UserInterface {
     }
 
     private boolean validateFlower (UserFlowerInput FlowerData) {
-        if (!Arrays.asList(this.fc.FLOWER_TYPES).contains(FlowerData.getType())) {
-            this.log("Sorry. We don't have this flower in our store. Please, try again");
+        if (!Arrays.asList(fc.FLOWER_TYPES).contains(FlowerData.getType())) {
+            log("Sorry. We don't have this flower in our store. Please, try again");
             return false;
         }
 

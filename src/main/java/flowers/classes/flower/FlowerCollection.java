@@ -15,32 +15,32 @@ public class FlowerCollection {
 
     public FlowerCollection () {
         // dummy data (for fast testing)
-        if (this.insertDummyData) {
-            this.addDummyData();
+        if (insertDummyData) {
+            addDummyData();
         }
     }
 
     public void addFlowerToCollection (UserFlowerInput flowerData) {
-        Flower flower = this.flowerFactory.createNew(flowerData);
-        this.flowers.add(flower);
+        Flower flower = flowerFactory.createNew(flowerData);
+        flowers.add(flower);
     }
 
     public void showInfo () {
-        for (Flower flower: this.flowers) {
+        for (Flower flower: flowers) {
             flower.tellAllAboutThisFlower();
         }
     }
 
     public String getTotalPrice () {
         int total = 0;
-        for (Flower flower: this.flowers) {
+        for (Flower flower: flowers) {
             total += flower.getPrice();
         }
         return "Total price is $" + total;
     }
 
     public void sortByLifetime () {
-        Collections.sort(this.flowers, new Comparator<Flower>() {
+        Collections.sort(flowers, new Comparator<Flower>() {
             public int compare(Flower s1, Flower s2) {
                 return s1.getLifetime() > s2.getLifetime() ? 1 : -1;
             }
@@ -48,17 +48,17 @@ public class FlowerCollection {
     }
 
     public ArrayList<Flower> getCollection () {
-        return this.flowers;
+        return flowers;
     }
 
     private void addDummyData () {
         Flower f1 = flowerFactory.createNew(new UserFlowerInput("rose", 50, 5, 20));
-        this.flowers.add(f1);
+        flowers.add(f1);
 
         Flower f2 = flowerFactory.createNew(new UserFlowerInput("lily", 30, 2, 40));
-        this.flowers.add(f2);
+        flowers.add(f2);
 
         Flower f3 = flowerFactory.createNew(new UserFlowerInput("rose", 10, 10, 40));
-        this.flowers.add(f3);
+        flowers.add(f3);
     }
 }

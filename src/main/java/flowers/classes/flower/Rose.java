@@ -8,6 +8,6 @@ public class Rose extends Flower {
     }
 
     public void tellAllAboutThisFlower () {
-        System.out.println("Rose with size=" + this.size + "mm and " + lifetime + " days old");
+        System.out.println("Rose with size=" + size + "mm and " + lifetime + " days old");
     };
 }

@@ -12,18 +12,18 @@ public class UserFlowerInput {
     }
 
     public String getType () {
-        return this.type;
+        return type;
     }
 
     public int getPrice () {
-        return this.price;
+        return price;
     }
 
     public int getLifetime () {
-        return this.lifetime;
+        return lifetime;
     }
 
     public int getLength () {
-        return this.length;
+        return length;
     }
 }
