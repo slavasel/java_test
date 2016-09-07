@@ -44,9 +44,15 @@ public class UserInterface {
         //т.о. можно избавиться от комментариев и сделать самодокументируемый код
             // Adding a Flower
             if (selection.equals("add")) {
-                UserFlowerInput flowerData = gatherFlowerData();
-                while (!validateFlower(flowerData)) {
+                UserFlowerInput flowerData;
+                try {
                     flowerData = gatherFlowerData();
+                } catch (InvalidNameException e) {
+                    System.out.println(e);
+                    wait(2);
+                    showDescription();
+                    listenUserInteractions();
+                    return;
                 }
 
                 fc.addFlowerToCollection(flowerData);
@@ -73,10 +79,10 @@ public class UserInterface {
 
             // Show filtered data
             if (selection.equals("filter")) {
-                Integer[] filterData = gatherLengthFilter();
+                int[] filterData = gatherLengthFilter();
 
                 for (Flower flower: fc.getCollection()) {
-                    if (flower.getLength() > (int) filterData[0] && flower.getLength() < (int) filterData[1]) {
+                    if (flower.getLength() > filterData[0] && flower.getLength() < filterData[1]) {
                         flower.tellAllAboutThisFlower();
                     }
                 }
@@ -95,10 +101,14 @@ public class UserInterface {
         }
     }
 
-    private UserFlowerInput gatherFlowerData () {
+    private UserFlowerInput gatherFlowerData() throws InvalidNameException {
         // ask use to fill all required data
         log("Enter type (rose, lily):");
         String type = scanner.next(); // нужно сразу проверить, чтобы вводили только rose или lily. Т.к. валидатор вызывается только после того как все ввели.
+
+        if (!(type.equals("rose") || type.equals("lily"))) {
+            throw new InvalidNameException("Flower is not available");
+        }
 
         log("Enter length (mm):");
         int length = scanner.nextInt();
@@ -113,7 +123,7 @@ public class UserInterface {
         return ret;
     }
 
-    private Integer[] gatherLengthFilter () {  // лучше было бы вернуть массив int а не Integer. Но даже в данном случае в строке 79 можно не делеть приведение типов.
+    private int[] gatherLengthFilter () {  // лучше было бы вернуть массив int а не Integer. Но даже в данном случае в строке 79 можно не делеть приведение типов.
     //Почитай про исходящее и нисходящее приобразование типов а также по автобоксинг и автоанбоксинг
         log("Enter min length:");
         Integer l1 = scanner.nextInt();
@@ -121,7 +131,7 @@ public class UserInterface {
         log("Enter max lenth:");
         Integer l2 = scanner.nextInt();
 
-        Integer[] ret = {l1, l2};
+        int[] ret = {l1, l2};
         return ret;
     }
 
